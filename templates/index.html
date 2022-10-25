@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weibo Analyzer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, 
+                                     initial-scale=1.0, 
+                                     maximum-scale=1.0, 
+                                     user-scalable=no">
+	<!-- 引入jquery和bootstrap -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+	<h1 style="text-align: center;">微博分析@Mz1</h1>
+	<hr/>
+	<h2 style="text-align: center;">当前热搜</h2>
+	<button type="button" class="btn btn-default" onclick="window.location.href='./';">按微博热度值排序</button>
+	<button type="button" class="btn btn-primary" onclick="window.location.href='./raw';">按原始热搜值排序</button>
+	<hr/>
+
+	<table class="table table-striped">
+	<!-- <caption>条纹表格布局</caption> -->
+	<thead>
+		<tr>
+			<th>排行</th>
+			<th>热度值</th>
+			<th>原始热搜值</th>
+			<th>标题</th>
+			<th>上榜时间</th>
+			<th>分类</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for topic in topic_list %}
+		<tr>
+			<td>{{topic.rank}}</td>
+			<td>{{topic.num}}</td>
+			<td>{{topic.raw_hot}}</td>
+			<td>{{topic.word}}</td>
+			<td>{{topic.onboard_time}}</td>
+			<td>{{topic.category}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+
+
+
+
+
+</div>
+	
+</body>
+</html>
+
