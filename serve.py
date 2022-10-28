@@ -32,6 +32,7 @@ def view_log(request):
 	ip = request.remote_addr
 	if ip == '127.0.0.1':
 		# 判断反向代理的存在
+		# ...
 		pass
 	with open(LOG_DIR + 'view.log', 'a', encoding='utf-8') as f:
 		f.write(ip + '\n')
@@ -64,7 +65,8 @@ def index_raw():
 def statistic():
 	with open(LOG_DIR + 'view.log', 'r', encoding='utf-8') as f:
 		text = f.read()
-	return text
+	_count = len(text.split('\n'))
+	return render_template('statistic.html', _count=_count)
 
 
 if __name__ == '__main__':

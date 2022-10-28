@@ -1,5 +1,9 @@
 # API
 
+> 这个文档用于记录获取微博数据的api
+>
+> 尽量写得详细一点，如果api发生变化则及时修改
+
 ### 获取热搜
 
 > https://weibo.com/ajax/statuses/hot_band
