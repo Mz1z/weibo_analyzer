@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request
 import sqlite3
-import creeper
 import os
+
+
+import creeper
+import db_func
 
 # 日志、临时文件存放目录
 LOG_DIR = './log/'
@@ -67,6 +70,22 @@ def statistic():
 		text = f.read()
 	_count = len(text.split('\n'))
 	return render_template('statistic.html', _count=_count)
+	
+# 留言
+@app.route('/remark', methods=['GET', 'POST'])
+def remark():
+	if request.method == 'GET':
+		return render_template('remark.html')
+	elif request.method == 'POST':
+		text = request.form.get('text')
+		email = request.form.get('email')
+		if text == None:
+			return '留言失败，内容不得为空'
+		
+		# 将留言写入数据库
+		db_func.insert_remark(text, email)
+		
+		return f'留言成功: {email+": "+text}'
 
 
 if __name__ == '__main__':
